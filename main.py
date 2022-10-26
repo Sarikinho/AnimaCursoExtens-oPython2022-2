@@ -1,27 +1,18 @@
-# Meu primeiro projeto Python
-# Isso é uma linha de comentario feita na linguagem português
-'''
-Aqui temos um comentário em bloco.
-'''
+#Comando input():quero permitir que o usuario digite algo
+nome = str(input("Digita seu nome:\n"))
 
-{
-  print("Olá mundo!")
-  
+#Exibir na tela o nome e pedir a idade e exibir a idade
+print("Olá",(nome),", quantos anos você tem?")
+idade = int(input())
 
-}
-# Quando quiser guardar uma String! (frases)
-nome = "Henrique da Costa Sardeiro."
-# Variaveis numéricas não bote ""
-idade = 19
-# Botando em prática as variáveis nome e idade
-# Exemplo da aula (3 maneiras)
+print ("\nForam coletadas as seguintes informações:\nNome:",nome,"\nIdade:",idade)
 
-# print("Meu nome é"+nome)
-# print(f"Meu nome é {nome}")
-# print("Meu nome é "+nome) ou com número ("Tenho"+str(idade)"anos.")
-# Quebra linha = \n
+#Ainda não foi dado, só um teste mesmo
+if idade > 18:
+  print("Você é maior de idade")
+else:
+  print("Você é menor de idade")
 
-{
-print("Olá Usuário, consigo acessar claramente todos os seus dados, mas não se assuste, sou uma maquina inofenciva,", nome, "\n\nPossuo tambem algumas informações relativas a sua idade, que no caso é",idade, "anos.")
-
-}
+#Dobrei o int (18)
+dobro = idade * 2
+print (f"O dobro da sua idade é {int(dobro)}")
