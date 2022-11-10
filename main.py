@@ -1,47 +1,34 @@
-print("Início de aula 3 (09/11/2022)")
+#criação de funções lesgo
 
-contador = 1
+preco = 19.90
 
-# Exibir de 1 até 10 repetidamente
-while(contador <= 10):
-  print (contador)
-  contador = contador+1
+#Calcular 5% de imposto, guardar na variavel imposto e exibir na tela
+imposto = preco * 0.05
+print("Seu imposto é",imposto)
 
-# Laço for (python for = for each)
-fruta = "goiaba"
-print (fruta)
+preco2 = 100
+imposto = preco2 * 0.05
+print("Seu outro imposto é",imposto)
 
-fruta1 = "laranja"
-fruta2 = "maçã"
-fruta3 = "uva"
+#Criar uma função "calcular_imposto()", que calcula um imposto de 5% e retorna a quem pediu
+def calcular_imposto(preco_produto): #utilizado para definir o nome e a funcionalidade de sua função.
+  imposto = preco_produto * 0.05
+  return imposto 
 
-#Lista
-frutas = ["laranja", "maçã", "uva"]
+#Aqui é o uso... aqui é imposto a calcular
+preco = float(input("Digite o preço do produto\n"))
+imposto = calcular_imposto(preco)
+print(imposto)
 
-#mostra todas
-print (frutas)
+#Explicação de variável local x global
+print(preco) #????
+preco_produto = 100
+print (preco_produto)
 
-#quero exibir apenas a 3a. furta (uva)
-print(frutas[0])
-print(frutas[1])
-print(frutas[2])
+#agora calcular imposto a alíquota agora é 7%
 
-#exibir quantas frutas tem na minha lista?
-print (len(frutas)) #length = tamanho
+valores = [1.99, 24.50, 78.27, 1515.5]
+#se eu quiser calcular o imposto destes quatro valores e mostrar na tela é assim:
+for valor in valores:
+  print(f"O imposto de {valor} é {calcular_imposto(valor)}")
 
-#Quero incluir uma fruta nova
-frutas.append("manga")
-
-print(len(frutas)) #lenght = tamanho
-print(frutas)
-
-print (frutas[0])
-print (frutas[1])
-print (frutas[2])
-print (frutas[3])
-#print (frutas[4])
-
-i=0
-while(i<len(frutas)):
-  print(frutas[i])
-  i = i + 1
