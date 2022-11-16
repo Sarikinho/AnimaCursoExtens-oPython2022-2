@@ -1,34 +1,22 @@
-#criação de funções lesgo
+#1o. passo: importar a biblioteca sqlite3
+import sqlite3
 
-preco = 19.90
+#2o. passo: Vamos estabelecer uma conexão com o banco
+conexao = sqlite3.connect("dc_universe.db")
 
-#Calcular 5% de imposto, guardar na variavel imposto e exibir na tela
-imposto = preco * 0.05
-print("Seu imposto é",imposto)
+#3o. passo: Criar um objeto do tipo cursor
+cursor = conexao.cursor()
 
-preco2 = 100
-imposto = preco2 * 0.05
-print("Seu outro imposto é",imposto)
+#4o. passo: Comando SQL do banco
+sql = "SELECT pessoa_id, nome, nome_civil, tipo FROM pessoas"
 
-#Criar uma função "calcular_imposto()", que calcula um imposto de 5% e retorna a quem pediu
-def calcular_imposto(preco_produto): #utilizado para definir o nome e a funcionalidade de sua função.
-  imposto = preco_produto * 0.05
-  return imposto 
+#5o. passo: Executar o comando SQL no SQLlite (no cursor)
+cursor.execute(sql)
 
-#Aqui é o uso... aqui é imposto a calcular
-preco = float(input("Digite o preço do produto\n"))
-imposto = calcular_imposto(preco)
-print(imposto)
+#6o. passo: Exibir a consulta com todos os nomes de heróis e vilões do banco de dados
+pessoas = cursor.fetchall()
+for pessoa in pessoas:
+  print(pessoa)
 
-#Explicação de variável local x global
-print(preco) #????
-preco_produto = 100
-print (preco_produto)
-
-#agora calcular imposto a alíquota agora é 7%
-
-valores = [1.99, 24.50, 78.27, 1515.5]
-#se eu quiser calcular o imposto destes quatro valores e mostrar na tela é assim:
-for valor in valores:
-  print(f"O imposto de {valor} é {calcular_imposto(valor)}")
-
+for pessoa in pessoas:
+  print(f"Nome: {pessoa[1]} ({pessoa[2]})")
