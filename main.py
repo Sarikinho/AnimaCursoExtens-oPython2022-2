@@ -1,22 +1,22 @@
-#1o. passo: importar a biblioteca sqlite3
-import sqlite3
+import aula4p3 as a43
 
-#2o. passo: Vamos estabelecer uma conexão com o banco
-conexao = sqlite3.connect("dc_universe.db")
+conexao, cursor = a43.conectar()
 
-#3o. passo: Criar um objeto do tipo cursor
-cursor = conexao.cursor()
+nome = input("Digite o nome do herói/vilão:\n")
+nome_civil = input("Digite o nome civil do herói/vilão (nome real):\n")
+tipo = input ("Tecle 1 para Herói(na) ou 2 para Vilã(o):\n")
 
-#4o. passo: Comando SQL do banco
-sql = "SELECT pessoa_id, nome, nome_civil, tipo FROM pessoas"
-
-#5o. passo: Executar o comando SQL no SQLlite (no cursor)
+#Consulta para o valor máximo usado no banco
+sql = "SELECT MAX(pessoa_id)+1 FROM pessoas"
 cursor.execute(sql)
+pessoa_id = cursor.fetchone()[0] #O [0] pode ser posto aq
 
-#6o. passo: Exibir a consulta com todos os nomes de heróis e vilões do banco de dados
-pessoas = cursor.fetchall()
-for pessoa in pessoas:
-  print(pessoa)
+if tipo == "1":
+  tipo = "Herói(na)"
+elif tipo == "2":
+  tipo = "Vilã(o)"
+sql = f"INSERT INTO pessoas (pessoa_id, nome, nome_civil, tipo) VALUES ('{pessoa_id}', '{nome}', '{nome_civil}', '{tipo}')"
 
-for pessoa in pessoas:
-  print(f"Nome: {pessoa[1]} ({pessoa[2]})")
+cursor.execute(sql)
+conexao.commit()
+conexao.close()
